@@ -12,6 +12,8 @@ generate(mdpath, staging_dir, filepattern = "trait_\%s.dat", commands = c())
 \item{staging_dir}{the path where to write the files.}
 
 \item{filepattern}{the pattern for output files.}
+
+\item{commands}{a list of the commands to save to bayestraits.cmd}
 }
 \description{
 Generates a full set of Bayestraits analysis files
