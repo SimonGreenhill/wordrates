@@ -1,0 +1,11 @@
+#' @importFrom magrittr %>%
+#' @importFrom ape read.nexus
+#' @importFrom ape read.nexus.data
+#' @importFrom utils unzip
+#' @importFrom tools
+export(generate)
+export(get_states)
+export(get_treefile)
+export(get_words)
+export(read.phlorest)
+export(write.bayestraits)

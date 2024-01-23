@@ -1,0 +1,37 @@
+#NEXUS
+BEGIN TAXA;
+DIMENSIONS NTAX=6;
+TAXLABELS Khasi Khmu Lyngngam Palaung PnarJaintia WarLamin;
+END;
+BEGIN DATA;
+;
+FORMAT DATATYPE=STANDARD MISSING=? GAP=- SYMBOLS="01" NCHAR=19;
+CHARSTATELABELS
+    1 100_name_a,
+    2 100_name_b,
+    3 100_name_c,
+    4 100_name_d,
+    5 101_narrow_a,
+    6 101_narrow_b,
+    7 102_near_a,
+    8 102_near_b,
+    9 102_near_c,
+    10 103_neck_a,
+    11 103_neck_b,
+    12 103_neck_c,
+    13 103_neck_d,
+    14 104_new_a,
+    15 105_night_a,
+    16 105_night_b,
+    17 105_night_c,
+    18 106_nose_a,
+    19 106_nose_b,
+MATRIX
+Khasi       10101010010001100-0
+Khmu        11110100100011001-0
+Lyngngam    00000010001001010-0
+Palaung     00000001000101001-0
+PnarJaintia 01001010010001100-0
+WarLamin    001000100100011000-
+;
+END;
