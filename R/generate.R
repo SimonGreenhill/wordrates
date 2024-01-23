@@ -3,6 +3,7 @@
 #' @param mdpath the path to the directory or metadata JSON file.
 #' @param staging_dir the path where to write the files.
 #' @param filepattern the pattern for output files.
+#' @param commands a list of the commands to save to bayestraits.cmd
 #' @export
 generate <- function(mdpath, staging_dir, filepattern='trait_%s.dat', commands=c()) {
     cldfobj <- read.phlorest(mdpath)

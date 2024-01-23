@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(repository)
+library(wordrates)
 
-test_check("repository")
+test_check("wordrates")

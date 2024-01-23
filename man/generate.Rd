@@ -4,12 +4,14 @@
 \alias{generate}
 \title{Generates a full set of Bayestraits analysis files}
 \usage{
-generate(metadata, staging_dir, filepattern = "trait_\%s.dat")
+generate(mdpath, staging_dir, filepattern = "trait_\%s.dat", commands = c())
 }
 \arguments{
-\item{staging_dir}{the path where to write the files}
-
 \item{mdpath}{the path to the directory or metadata JSON file.}
+
+\item{staging_dir}{the path where to write the files.}
+
+\item{filepattern}{the pattern for output files.}
 }
 \description{
 Generates a full set of Bayestraits analysis files
