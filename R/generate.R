@@ -15,20 +15,23 @@ generate <- function(mdpath, staging_dir, filepattern='trait_%s.dat', commands=c
     }
 
     for (word in get_words(cldfobj)) {
-        filename <- file.path(staging_dir, sprintf(filepattern, word))
+        filename <- get_filename(staging_dir, word, filepattern)
         #cldfobj$metadata[['rdf:ID']]
         message(sprintf("generate %s -> %s\n", word, filename))
-        write.bayestraits(get_states(cldfobj, word), filename)
+        states <- get_states(cldfobj, word)
+        if (is.constant(states)) { message(sprintf("warning: %s is constant", word)) }
+        write.bayestraits(states, filename)
     }
 
     message(sprintf("copying trees -> posterior.trees\n"))
     if (!is.null(cldfobj$posterior)) {
         if (tolower(tools::file_ext(cldfobj$posterior)) == 'zip') {
             message('unzipping')
-            utils::unzip(cldfobj$posterior, exdir=staging_dir)
+            trees <- ape::read.nexus(unz(cldfobj$posterior, 'posterior.trees'))
         } else {
-            file.copy(cldfobj$posterior, staging_dir)
+            trees <- ape::read.nexus(trees)
         }
+        ape::write.nexus(trees, file=file.path(staging_dir, 'posterior.trees'), translate=TRUE)  # bayestraits needs translated trees
     } else if (!is.null(cldfobj$summary)) {
         message('falling back to summary trees as no posterior trees found')
         file.copy(cldfobj$summary, staging_dir)
@@ -36,8 +39,12 @@ generate <- function(mdpath, staging_dir, filepattern='trait_%s.dat', commands=c
         message('no trees found')
     }
 
+
+
+
     if (length(commands)) {
         writeLines(commands, file.path(staging_dir, 'bayestraits.cmd'))
     }
 
 }
+

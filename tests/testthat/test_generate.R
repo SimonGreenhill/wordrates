@@ -2,7 +2,7 @@ test_that("test generate", {
     staging_dir <- tempdir()
     suppressMessages(
         generate(
-            "data/nagaraja_et_al2013",
+            "data",
             staging_dir,
             filepattern='test_%s.dat',
             commands=c("test", "bayestraits")

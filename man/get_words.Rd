@@ -16,6 +16,7 @@ A list of words
 Extracts a list of words from the phlorest dataset
 }
 \examples{
-cldfobj <- cldf(system.file("testthat/data/nagaraja_et_al2013", "cldf-metadata.json", package = "rcldf"))
-get_words(cldfobj)
+mdpath <- system.file("testthat/data", "cldf-metadata.json", package = "wordrates")
+phl <- phlorest(mdpath)
+get_words(phl)
 }

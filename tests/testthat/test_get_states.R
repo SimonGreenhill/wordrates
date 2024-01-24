@@ -1,8 +1,8 @@
 
-DATA <- read.phlorest("data/nagaraja_et_al2013")
+DATA <- read.phlorest("data")
 
 test_that("test fail on not a phlorest object -- require data attribute", {
-    expect_error(get_states(rcldf::cldf("data/nagaraja_et_al2013")), "'cldfobject' must inherit from class phlorest")
+    expect_error(get_states(rcldf::cldf("data")), "'cldfobject' must inherit from class phlorest")
 })
 
 
@@ -13,7 +13,7 @@ test_that("test fail on bad word", {
 
 
 test_that("test failure on non numeric", {
-    phl <- read.phlorest("data/nagaraja_et_al2013")
+    phl <- read.phlorest("data")   # Read so we're not changing the cached DATA object
     phl$tables$ParameterTable$ID[2] <- 'COGNATE_A'
     # I don't care that we will also get a warning - the function will stop anyway
     # and that's what I want to test, so use suppressWarnings() to silence this

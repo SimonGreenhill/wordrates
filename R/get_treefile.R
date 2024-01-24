@@ -5,11 +5,12 @@
 #' @return A file path
 #' @export
 #' @examples
-#' cldfobj <- cldf(system.file("testthat/data/nagaraja_et_al2013", "cldf-metadata.json", package = "rcldf"))
-#' get_treefile(cldfobj, 'posterior')
-#' 'testthat/data/nagaraja_et_al2013/posterior.trees'
-#' get_treefile(cldfobj, 'summary')
-#' 'testthat/data/nagaraja_et_al2013/summary.trees'
+#' mdpath <- system.file("testthat/data", "cldf-metadata.json", package = "wordrates")
+#' phl <- read.phlorest(mdpath)
+#' get_treefile(phl, 'posterior')
+#' 'testthat/data/posterior.trees'
+#' get_treefile(phl, 'summary')
+#' 'testthat/data/summary.trees'
 get_treefile <- function(cldfobj, type='posterior') {
     if (type == 'posterior') {
         treefile <- file.path(cldfobj$base_dir, 'posterior.trees.zip')

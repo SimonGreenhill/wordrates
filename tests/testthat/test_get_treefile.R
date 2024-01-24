@@ -1,6 +1,6 @@
 
 test_that("test get_treefile", {
-    cldfobj <- read.phlorest("data/nagaraja_et_al2013")
+    cldfobj <- read.phlorest("data")
     p <- get_treefile(cldfobj, 'posterior')
     s <- get_treefile(cldfobj, 'summary')
     x <- get_treefile(cldfobj, 'whatever')

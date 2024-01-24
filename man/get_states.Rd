@@ -4,14 +4,14 @@
 \alias{get_states}
 \title{returns a named list of taxon => cognate sets}
 \usage{
-get_states(cldfobj, word, alphabet = LETTERS, missing_state = "-")
+get_states(cldfobj, word, alphabet = ALPHABET, missing_state = "-")
 }
 \arguments{
 \item{cldfobj}{A phlorest object.}
 
 \item{word}{the word to extract states for}
 
-\item{alphabet}{the coding alphabet to use (default=LETTERS)}
+\item{alphabet}{the coding alphabet to use (default=c(LETTERS, 1:9, 0))}
 
 \item{missing_state}{the state to use for missing values (default = "-")}
 }
@@ -22,6 +22,6 @@ A named list of states
 returns a named list of taxon => cognate sets
 }
 \examples{
-phl <- phlorest(system.file("testthat/data/nagaraja_et_al2013", "cldf-metadata.json", package = "rcldf"))
-get_states(phl, 'NAME')
+mdpath <- system.file("testthat/data", "cldf-metadata.json", package = "wordrates")
+get_states(read.phlorest(mdpath), 'NAME')
 }

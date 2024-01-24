@@ -1,12 +1,14 @@
 #' Loads a Phlorest Dataset.
 #'
 #' @param mdpath the path to the directory or metadata JSON file.
+#' @param datafile the expected datafile name (default="data.nex")
 #' @return A `phlorest` object
 #' @export
 #' @examples
-#' phl <- cldf(system.file("testthat/data/nagaraja_et_al2013", "cldf-metadata.json", package = "rcldf"))
-read.phlorest <- function(metadata, datafile='data.nex') {
-    cldfobj <- rcldf::cldf(metadata)
+#' mdpath <- system.file("testthat/data", "cldf-metadata.json", package = "wordrates")
+#' phl <- phlorest(mdpath)
+read.phlorest <- function(mdpath, datafile='data.nex') {
+    cldfobj <- rcldf::cldf(mdpath)
 
     # load data
     datafile <- file.path(cldfobj$base_dir, datafile)
@@ -21,3 +23,14 @@ read.phlorest <- function(metadata, datafile='data.nex') {
     class(cldfobj) <- c('cldf', 'phlorest')
     cldfobj
 }
+
+#' Loads a Phlorest Dataset.
+#'
+#' @param mdpath the path to the directory or metadata JSON file.
+#' @param datafile the expected datafile name (default="data.nex")
+#' @return A `phlorest` object
+#' @export
+#' @examples
+#' mdpath <- system.file("testthat/data", "cldf-metadata.json", package = "wordrates")
+#' phl <- phlorest(mdpath)
+phlorest <- read.phlorest

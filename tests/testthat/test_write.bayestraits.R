@@ -1,6 +1,6 @@
 
 test_that("test write.bayestraits", {
-    phl <- read.phlorest("data/nagaraja_et_al2013")
+    phl <- read.phlorest("data")
     states <- get_states(phl, 'NAME')
 
     outfile <- tempfile()

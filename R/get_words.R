@@ -4,13 +4,14 @@
 #' @return A list of words
 #' @export
 #' @examples
-#' cldfobj <- cldf(system.file("testthat/data/nagaraja_et_al2013", "cldf-metadata.json", package = "rcldf"))
-#' get_words(cldfobj)
+#' mdpath <- system.file("testthat/data", "cldf-metadata.json", package = "wordrates")
+#' phl <- phlorest(mdpath)
+#' get_words(phl)
 # c("NAME", "NARROW", ...)
 get_words <- function(cldfobj) {
     cldfobj$tables$ParameterTable |>
-        dplyr::filter(Concepticon_Gloss != "" & !is.na(Concepticon_Gloss)) |>
-        dplyr::pull(Concepticon_Gloss) |>
+        dplyr::filter(.data$Concepticon_Gloss != "" & !is.na(.data$Concepticon_Gloss)) |>
+        dplyr::pull(.data$Concepticon_Gloss) |>
         unique() |>
         sort()
 }
